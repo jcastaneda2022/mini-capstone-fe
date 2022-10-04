@@ -7,7 +7,6 @@ import logger from 'redux-logger';
 // Reducers
 import userReducer from "./reducers/userReducer";
 
-
 export const store = configureStore({
     reducer: {
         activeUser: userReducer,

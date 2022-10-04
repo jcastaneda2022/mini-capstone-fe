@@ -1,4 +1,4 @@
-import { put } from '../../utilities/https';
+import { put, post } from '../../utilities/https';
 
 export const registerUser = (newUserDetails) => {
     const url = '/user/signup';
@@ -7,7 +7,7 @@ export const registerUser = (newUserDetails) => {
         promise.then((response) => {
             resolve({
                 type: 'REGISTER_USER',
-                body: response
+                payload: response
             })
         }).catch((error) => {
             reject(error)
@@ -16,12 +16,18 @@ export const registerUser = (newUserDetails) => {
 }
 
 export const loginUser = (activeUserDetails) => {
-    return (dispatch) => {
-        dispatch({
-            type: 'LOGIN_USER',
-            payload: activeUserDetails
+    const url = '/user/login';
+    return new Promise((resolve, reject) => {
+        const promise = post(url, activeUserDetails)
+        promise.then((response) => {
+            resolve({
+                type: 'LOGIN_USER',
+                payload: response
+            })
+        }).catch((error) => {
+            reject(error)
         })
-    }
+    })
 }
 
 export const logoutUser = () => {
