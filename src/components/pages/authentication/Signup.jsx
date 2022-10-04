@@ -7,7 +7,9 @@ import { auth, db } from "../../../firebase";
 import { useCollection } from "react-firebase-hooks/firestore";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import * as actionUser from "../../../redux/actions/actionUser";
+import { bindActionCreators } from "redux";
 
 export default function Signup() {
   const [darkMode, setDarkMode] = useState("");
@@ -20,9 +22,9 @@ export default function Signup() {
   const [invalidEmail, setInvalidEmail] = useState(false);
   const [invalidPassword, setInvalidPassword] = useState(false);
 
-  const [userList] = useCollection(db.collection("users"));
   const [user] = useAuthState(auth);
   const activeUser = useSelector((state) => state.activeUser);
+  const { registerUser } = bindActionCreators(actionUser, useDispatch());
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -33,15 +35,6 @@ export default function Signup() {
 
   const checkIfValid = () => {
     let isValid = true;
-    userList?.docs.forEach((doc) => {
-      // Check if email is valid
-      if (doc.data().email === email || !email) {
-        isValid = false;
-        setInvalidEmail(true);
-      } else {
-        setInvalidEmail(false);
-      }
-    });
 
     // Check if password is same with confirmPassword
     if (password !== confirmPassword || !password) {
@@ -56,14 +49,17 @@ export default function Signup() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     if (checkIfValid()) {
-      db.collection("users").add({
-        email: email,
-        password: password,
-        timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-      });
-      setShowModal(true);
+      registerUser({ email: email, password: password })
+        .then((response) => {
+          console.log(response, "response");
+          setInvalidEmail(false);
+          setShowModal(true);
+        })
+        .catch((error) => {
+          setInvalidEmail(true);
+          console.log(error, "error");
+        });
     }
   };
 
