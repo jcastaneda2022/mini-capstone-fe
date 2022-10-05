@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from "react";
-import firebase from "firebase/compat/app";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSun, faMoon } from "@fortawesome/free-solid-svg-icons";
 import { Form, Modal } from "react-bootstrap";
-import { auth, db } from "../../../firebase";
-import { useCollection } from "react-firebase-hooks/firestore";
+import { auth } from "../../../firebase";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useDispatch, useSelector } from "react-redux";
@@ -22,10 +20,10 @@ export default function Signup() {
   const [invalidEmail, setInvalidEmail] = useState(false);
   const [invalidPassword, setInvalidPassword] = useState(false);
 
+  const navigate = useNavigate();
+  const { registerUser } = bindActionCreators(actionUser, useDispatch());
   const [user] = useAuthState(auth);
   const activeUser = useSelector((state) => state.activeUser);
-  const { registerUser } = bindActionCreators(actionUser, useDispatch());
-  const navigate = useNavigate();
 
   useEffect(() => {
     if (user || activeUser.email) {
