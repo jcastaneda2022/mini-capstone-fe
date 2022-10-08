@@ -63,8 +63,6 @@ export default function Login() {
       .catch((error) => alert(error.message));
   };
 
-  console.log(user);
-
   return (
     <div className="auth">
       <div className={`page-content${darkMode} d-flex align-items-center`}>

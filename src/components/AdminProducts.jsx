@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useState } from "react";
 import { Form } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { bindActionCreators } from "redux";
-import * as actionProduct from "../../redux/actions/actionProduct";
+import * as actionProduct from "../redux/actions/actionProduct";
 import { useDropzone } from "react-dropzone";
 
 export default function AdminProducts() {
@@ -12,7 +12,10 @@ export default function AdminProducts() {
   const [type, setType] = useState("regular");
   const [filter, setFilter] = useState("best");
   const [description, setDescription] = useState("");
-  const { getAllProducts } = bindActionCreators(actionProduct, useDispatch());
+  const { getAllProducts, addProduct, deleteProduct } = bindActionCreators(
+    actionProduct,
+    useDispatch()
+  );
   const productList = useSelector((state) => state.productList);
 
   // Validation
@@ -26,8 +29,18 @@ export default function AdminProducts() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (checkIfValid()) {
+      const requestBody = {
+        productName: productName,
+        price: price,
+        ratings: ratings,
+        type: type,
+        filter: filter,
+        description: description,
+      };
 
-    checkIfValid();
+      addProduct(requestBody);
+    }
   };
 
   const checkIfValid = () => {
@@ -74,19 +87,22 @@ export default function AdminProducts() {
 
     // Return statement
     return (
-      <div className="card h-100 text-center p-4" {...getRootProps()}>
+      <div className="card h-100 text-center p-4">
         <img
           src={
             product.imageLink ? product.imageLink : "/images/empty-image.jpeg"
           }
           alt={product.productName}
+          {...getRootProps()}
         />
         <div className="card-body">
           <h5 className="card-title mb-0">
             {product?.productName.substring(0, 12)}...
           </h5>
           <p className="card-text lead fw-bold">$ {product.price}</p>
-          <button>DELETE</button>
+          <button onClick={() => deleteProduct(product.productId)}>
+            DELETE
+          </button>
         </div>
       </div>
     );

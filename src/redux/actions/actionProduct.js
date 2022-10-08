@@ -1,4 +1,4 @@
-import { get } from '../../utilities/https';
+import { get, put, deleteMethod } from '../../utilities/https';
 
 export const getAllProducts = () => {
     const url = '/product/getAll';
@@ -8,9 +8,39 @@ export const getAllProducts = () => {
             resolve({
                 type: 'SAVE_PRODUCT_LIST',
                 payload: response
-            }).catch((error) => {
-                reject(error);
             })
+        }).catch((error) => {
+            reject(error);
+        })
+    })
+}
+
+export const addProduct = (body) => {
+    const url = '/product/add';
+    return new Promise((resolve, reject) => {
+        const promise = put(url, body);
+        promise.then((response) => {
+            resolve({
+                type: 'SAVE_PRODUCT_LIST',
+                payload: response
+            })
+        }).catch((error) => {
+            reject(error);
+        })
+    })
+}
+
+export const deleteProduct = (productId) => {
+    const url = `/product/delete/${productId}`;
+    return new Promise((resolve, reject) => {
+        const promise = deleteMethod(url);
+        promise.then((response) => {
+            resolve({
+                type: 'SAVE_PRODUCT_LIST',
+                payload: response
+            })
+        }).catch((error) => {
+            reject(error);
         })
     })
 }
