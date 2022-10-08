@@ -6,10 +6,12 @@ import logger from 'redux-logger';
 
 // Reducers
 import userReducer from "./reducers/userReducer";
+import productReducer from './reducers/productReducer';
 
 export const store = configureStore({
     reducer: {
         activeUser: userReducer,
+        productList: productReducer,
     },
     middleware: [
         thunk,
