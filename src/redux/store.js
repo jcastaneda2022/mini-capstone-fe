@@ -8,6 +8,7 @@ import logger from 'redux-logger';
 import userReducer from "./reducers/userReducer";
 import productReducer from './reducers/productReducer';
 import blogReducer from './reducers/blogReducer';
+import popularProductReducer from "./reducers/popularProductReducer";
 
 
 export const store = configureStore({
@@ -15,6 +16,7 @@ export const store = configureStore({
         activeUser: userReducer,
         productList: productReducer,
         blogList: blogReducer,
+        popularProductList: popularProductReducer,
     },
     middleware: [
         thunk,
