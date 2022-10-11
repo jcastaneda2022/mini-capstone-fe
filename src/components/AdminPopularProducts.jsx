@@ -8,6 +8,8 @@ import { useDropzone } from "react-dropzone";
 export default function AdminPopularProducts() {
   const [productName, setProductName] = useState("");
   const [price, setPrice] = useState("");
+  const [type, setType] = useState("topRated");
+
   const popularProductList = useSelector((state) => state.popularProductList);
   const { getAllPopularProducts, addPopularProduct, deletePopularProduct } =
     bindActionCreators(actionPopularProducts, useDispatch());
@@ -27,6 +29,7 @@ export default function AdminPopularProducts() {
       const body = {
         productName: productName,
         price: price,
+        type: type,
       };
 
       addPopularProduct(body);
@@ -139,6 +142,18 @@ export default function AdminPopularProducts() {
           <Form.Control.Feedback type="invalid">
             Price must be a number
           </Form.Control.Feedback>
+        </Form.Group>
+
+        {/* TYPE */}
+        <Form.Group controlId="formType" className="w-50">
+          <Form.Select
+            aria-label="Default select example"
+            onChange={(e) => setType(e.target.value)}
+          >
+            <option value="topRated">Top Rated</option>
+            <option value="bestSelling">Best Selling</option>
+            <option value="onSale">On Sale</option>
+          </Form.Select>
         </Form.Group>
 
         <div className="col-12 d-flex flex-wrap justify-content-center">
