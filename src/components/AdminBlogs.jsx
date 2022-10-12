@@ -90,9 +90,9 @@ export default function AdminBlogs() {
         />
         <div className="card-body">
           <h5 className="card-title mb-0">
-            {blog?.blogAuthor.substring(0, 12)}...
+            {blog?.blogName.substring(0, 12)}...
           </h5>
-          <p className="card-text lead fw-bold">{blog.blogName}</p>
+          <p className="card-text lead fw-bold">{blog.blogAuthor}</p>
           <button onClick={() => deleteBlog(blog.blogId)}>DELETE</button>
         </div>
       </div>
