@@ -94,6 +94,15 @@ export default function NavigationBar() {
               </NavLink>
             </>
           )}
+          {localStorage.email === "admin@admin.com" && (
+            <NavLink
+              to="/admin"
+              className="btn position-relative"
+              type="button"
+            >
+              <span className="nav-btn-label"> ADMIN</span>
+            </NavLink>
+          )}
         </div>
 
         <Navbar.Toggle className="border-0">
