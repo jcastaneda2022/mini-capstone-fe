@@ -5,7 +5,7 @@ import { Form, Modal } from "react-bootstrap";
 import { auth } from "../../../firebase";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import * as actionUser from "../../../redux/actions/actionUser";
 import { bindActionCreators } from "redux";
 
@@ -23,10 +23,9 @@ export default function Signup() {
   const navigate = useNavigate();
   const { registerUser } = bindActionCreators(actionUser, useDispatch());
   const [user] = useAuthState(auth);
-  const activeUser = useSelector((state) => state.activeUser);
 
   useEffect(() => {
-    if (user || activeUser.email) {
+    if (user || localStorage.email) {
       navigate("/");
     }
   });

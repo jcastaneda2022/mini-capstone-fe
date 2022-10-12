@@ -2,29 +2,26 @@ import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { Col, Container, Form, ListGroup, Row } from "react-bootstrap";
-import { useCollection } from "react-firebase-hooks/firestore";
-import { useSelector } from "react-redux";
-import { db } from "../../firebase";
 import { useNavigate } from "react-router-dom";
 
 export default function Cart() {
   const [total, setTotal] = useState(0);
-  const activeUser = useSelector((state) => state.activeUser);
-  const navigate = useNavigate();
-  const [cartProducts] = useCollection(
-    activeUser?.id &&
-      db
-        .collection("users")
-        .doc(activeUser.id)
-        .collection("cart")
-        .orderBy("timestamp")
-  );
+  // const activeUser = useSelector((state) => state.activeUser);
+  // const navigate = useNavigate();
+  // const [cartProducts] = useCollection(
+  //   activeUser?.id &&
+  //     db
+  //       .collection("users")
+  //       .doc(activeUser.id)
+  //       .collection("cart")
+  //       .orderBy("timestamp")
+  // );
 
-  useEffect(() => {
-    if (!activeUser.email) {
-      navigate("/");
-    }
-  });
+  // useEffect(() => {
+  //   if (!activeUser.email) {
+  //     navigate("/");
+  //   }
+  // });
 
   useEffect(() => {
     let value = 0;
