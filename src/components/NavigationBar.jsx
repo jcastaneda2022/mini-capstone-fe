@@ -62,7 +62,7 @@ export default function NavigationBar() {
               >
                 <FontAwesomeIcon icon={faShoppingCart} />
                 <span className="nav-btn-label"> CART </span>(
-                {cartProducts ? cartProducts?.docs.length : 0})
+                {/* {cartProducts ? cartProducts?.docs.length : 0}) */}
               </NavLink>
               <NavLink
                 to="/login"
