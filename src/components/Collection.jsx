@@ -67,7 +67,7 @@ export default function Collection() {
         <div className="text-center">
           <div className="rating">{renderRatings(item.ratings)}</div>
           <p className="text-capitalize my-1">{item.productName}</p>
-          <span className="fw-bold">{item.price}</span>
+          <span className="fw-bold">$ {item.price}</span>
         </div>
       </div>
     ));
