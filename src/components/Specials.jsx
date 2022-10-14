@@ -2,12 +2,14 @@ import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import * as actionProduct from "../redux/actions/actionProduct";
+import * as actionCart from "../redux/actions/actionCart";
 import { bindActionCreators } from "redux";
 import { useDispatch } from "react-redux";
 
 export default function Specials() {
   const [specials, setSpecials] = useState([]);
   const { getAllProducts } = bindActionCreators(actionProduct, useDispatch());
+  const { addToCart } = bindActionCreators(actionCart, useDispatch());
 
   useEffect(() => {
     getAllProducts().then((response) => {
@@ -16,6 +18,13 @@ export default function Specials() {
       );
     });
   }, []);
+
+  const addProductToCart = (productId) => {
+    if (localStorage.email) {
+      addToCart(localStorage.email, productId);
+      window.location.reload();
+    }
+  };
 
   const renderSpecials = () => {
     return specials.map((item) => (
@@ -33,7 +42,12 @@ export default function Specials() {
         <div className="text-center">
           <p className="text-capitalize mt-3 mb-1">{item.productName}</p>
           <span className="fw-bold d-block">$ {item.price}</span>
-          <button className="btn btn-primary mt-3">Add to Cart</button>
+          <button
+            className="btn btn-primary mt-3"
+            onClick={() => addProductToCart(item.productId)}
+          >
+            Add to Cart
+          </button>
         </div>
       </div>
     ));

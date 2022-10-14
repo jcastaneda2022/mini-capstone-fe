@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faShoppingCart,
@@ -10,14 +10,26 @@ import { Container, Navbar } from "react-bootstrap";
 import { NavLink, useNavigate } from "react-router-dom";
 import { auth } from "../firebase";
 import Spinner from "react-spinkit";
+import * as actionCart from "../redux/actions/actionCart";
+import { bindActionCreators } from "redux";
+import { useDispatch } from "react-redux";
 
 export default function NavigationBar() {
   const [loading, setLoading] = useState(false);
+  const [cartProducts, setCartProducts] = useState([]);
   const navigate = useNavigate();
-  // const [cartProducts] = useCollection(
-  //   activeUser?.id &&
-  //     db.collection("users").doc(activeUser.id).collection("cart")
-  // );
+  const { getAllProductsByUser } = bindActionCreators(
+    actionCart,
+    useDispatch()
+  );
+
+  useEffect(() => {
+    if (localStorage.email) {
+      getAllProductsByUser(localStorage.email).then((response) => {
+        setCartProducts(response.payload);
+      });
+    }
+  }, []);
 
   const logout = (e) => {
     e.preventDefault();
@@ -62,7 +74,7 @@ export default function NavigationBar() {
               >
                 <FontAwesomeIcon icon={faShoppingCart} />
                 <span className="nav-btn-label"> CART </span>(
-                {/* {cartProducts ? cartProducts?.docs.length : 0}) */}
+                {cartProducts ? cartProducts?.length : 0})
               </NavLink>
               <NavLink
                 to="/login"
