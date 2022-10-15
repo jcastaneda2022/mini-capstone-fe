@@ -44,10 +44,16 @@ export default function Cart() {
 
   const cartCheckOut = (e) => {
     e.preventDefault();
+    checkOut(activeUser.email).then((response) => {
+      setShowModal(true);
+      setCartProducts(response.payload);
+    });
   };
 
   const closeModal = (e) => {
     e.preventDefault();
+    setShowModal(false);
+    window.location.reload();
   };
 
   const setQuantity = (productId, quantity) => {
