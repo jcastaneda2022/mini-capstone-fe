@@ -31,7 +31,11 @@ export default function Specials() {
       <div className="col-md-6 col-lg-4 col-xl-3 p-2" key={item.productId}>
         <div className="special-img position-relative overflow-hidden">
           <img
-            src={item.imageLink ? item.imageLink : "/images/empty-image.jpeg"}
+            src={
+              item.imageLink
+                ? `http://localhost:8080/product/${item.productId}/download`
+                : "/images/empty-image.jpeg"
+            }
             alt={item.productName}
             className="w-100"
           />

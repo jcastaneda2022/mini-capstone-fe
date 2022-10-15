@@ -103,7 +103,7 @@ export default function Cart() {
                       <img
                         src={
                           product.imageLink
-                            ? product.imageLink
+                            ? `http://localhost:8080/product/${product.productId}/download`
                             : "/images/empty-image.jpeg"
                         }
                         alt={product.productName}

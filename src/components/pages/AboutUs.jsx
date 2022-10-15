@@ -35,7 +35,9 @@ export default function AboutUs() {
       >
         <img
           src={
-            product.imageLink ? product.imageLink : "/images/empty-image.jpeg"
+            product.imageLink
+              ? `http://localhost:8080/popular/${product.productId}/download`
+              : "/images/empty-image.jpeg"
           }
           alt={product.productName}
           className="img-fluid w-25 pe-3"

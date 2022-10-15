@@ -18,7 +18,11 @@ export default function Blogs() {
     return blogs.map((blog) => (
       <div className="col-md-6 col-lg-4 card border-0 my-3" key={blog.blogId}>
         <img
-          src={blog.imageLink ? blog.imageLink : "/images/empty-image.jpeg"}
+          src={
+            blog.imageLink
+              ? `http://localhost:8080/blog/${blog.blogId}/download`
+              : "/images/empty-image.jpeg"
+          }
           alt={blog.blogName}
         />
         <div className="card-body px-0">

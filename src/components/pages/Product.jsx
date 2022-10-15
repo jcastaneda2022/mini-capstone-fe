@@ -39,7 +39,9 @@ export default function Product() {
         <div className="col-md-6">
           <img
             src={
-              product.imageLink ? product.imageLink : "/images/empty-image.jpeg"
+              product.imageLink
+                ? `http://localhost:8080/product/${product.productId}/download`
+                : "/images/empty-image.jpeg"
             }
             alt={product.productName}
             height="400px"
