@@ -35,7 +35,7 @@ export default function Specials() {
           <img
             src={
               item.imageLink
-                ? `http://ec2-18-136-126-149.ap-southeast-1.compute.amazonaws.com:8080/product/${item.productId}/download`
+                ? `https://minicapsone-jowel.herokuapp.com/product/${item.productId}/download`
                 : "/images/empty-image.jpeg"
             }
             alt={item.productName}

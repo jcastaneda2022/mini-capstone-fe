@@ -85,7 +85,7 @@ export default function AdminProducts() {
       // Upload Image
       axios
         .put(
-          `http://ec2-18-136-126-149.ap-southeast-1.compute.amazonaws.com:8080/product/${product.productId}/upload`,
+          `https://minicapsone-jowel.herokuapp.com/product/${product.productId}/upload`,
           formData,
           {
             headers: {
@@ -111,7 +111,7 @@ export default function AdminProducts() {
         <img
           src={
             product.imageLink
-              ? `http://ec2-18-136-126-149.ap-southeast-1.compute.amazonaws.com:8080/product/${product.productId}/download`
+              ? `https://minicapsone-jowel.herokuapp.com/product/${product.productId}/download`
               : "/images/empty-image.jpeg"
           }
           alt={product.productName}

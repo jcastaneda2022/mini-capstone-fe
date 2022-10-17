@@ -11,8 +11,8 @@ export default function Home() {
   return (
     <>
       <Hero />
-      {/* <Collection /> */}
-      {/* <Specials /> */}
+      <Collection />
+      <Specials />
       <Banner />
       <Blogs />
       <Footer />
