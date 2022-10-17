@@ -79,11 +79,15 @@ export default function AdminBlogs() {
 
       // Upload to s3
       axios
-        .put(`http://localhost:8080/blog/${blog.blogId}/upload`, formData, {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        })
+        .put(
+          `http://http://ec2-18-142-245-113.ap-southeast-1.compute.amazonaws.com:8080//blog/${blog.blogId}/upload`,
+          formData,
+          {
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+          }
+        )
         .then(() => {
           console.log("file uploaded successfully");
           window.location.reload();
@@ -102,7 +106,7 @@ export default function AdminBlogs() {
         <img
           src={
             blog.imageLink
-              ? `http://localhost:8080/blog/${blog.blogId}/download`
+              ? `http://http://ec2-18-142-245-113.ap-southeast-1.compute.amazonaws.com:8080//blog/${blog.blogId}/download`
               : "/images/empty-image.jpeg"
           }
           alt={blog.blogName}

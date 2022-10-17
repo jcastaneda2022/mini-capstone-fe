@@ -20,7 +20,7 @@ export default function Blogs() {
         <img
           src={
             blog.imageLink
-              ? `http://localhost:8080/blog/${blog.blogId}/download`
+              ? `http://http://ec2-18-142-245-113.ap-southeast-1.compute.amazonaws.com:8080//blog/${blog.blogId}/download`
               : "/images/empty-image.jpeg"
           }
           alt={blog.blogName}
