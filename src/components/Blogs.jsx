@@ -10,7 +10,7 @@ export default function Blogs() {
 
   useEffect(() => {
     getAllBlogs().then((response) => {
-      setBlogs(response?.payload);
+      setBlogs(response ? response.payload : []);
     });
   }, []);
 
