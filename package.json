@@ -2,6 +2,7 @@
   "name": "mini-capstone-fe",
   "version": "0.1.0",
   "private": true,
+  "homepage": ".",
   "proxy": "https://minicapsone-jowel.herokuapp.com",
   "dependencies": {
     "@fortawesome/free-brands-svg-icons": "^6.2.0",
