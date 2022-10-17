@@ -15,7 +15,7 @@ export default function Blogs() {
   }, []);
 
   const renderBlogs = () => {
-    return blogs.map((blog) => (
+    return blogs?.map((blog) => (
       <div className="col-md-6 col-lg-4 card border-0 my-3" key={blog.blogId}>
         <img
           src={
