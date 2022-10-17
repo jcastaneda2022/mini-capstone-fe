@@ -33,7 +33,7 @@ export default function Specials() {
           <img
             src={
               item.imageLink
-                ? `http://http://ec2-18-142-245-113.ap-southeast-1.compute.amazonaws.com:8080//product/${item.productId}/download`
+                ? `http://ec2-18-142-245-113.ap-southeast-1.compute.amazonaws.com:8080//product/${item.productId}/download`
                 : "/images/empty-image.jpeg"
             }
             alt={item.productName}

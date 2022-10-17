@@ -80,7 +80,7 @@ export default function AdminBlogs() {
       // Upload to s3
       axios
         .put(
-          `http://http://ec2-18-142-245-113.ap-southeast-1.compute.amazonaws.com:8080//blog/${blog.blogId}/upload`,
+          `http://ec2-18-142-245-113.ap-southeast-1.compute.amazonaws.com:8080//blog/${blog.blogId}/upload`,
           formData,
           {
             headers: {
@@ -106,7 +106,7 @@ export default function AdminBlogs() {
         <img
           src={
             blog.imageLink
-              ? `http://http://ec2-18-142-245-113.ap-southeast-1.compute.amazonaws.com:8080//blog/${blog.blogId}/download`
+              ? `http://ec2-18-142-245-113.ap-southeast-1.compute.amazonaws.com:8080//blog/${blog.blogId}/download`
               : "/images/empty-image.jpeg"
           }
           alt={blog.blogName}

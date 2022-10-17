@@ -70,7 +70,7 @@ export default function AdminPopularProducts() {
       // Upload to s3
       axios
         .put(
-          `http://http://ec2-18-142-245-113.ap-southeast-1.compute.amazonaws.com:8080//popular/${product.productId}/upload`,
+          `http://ec2-18-142-245-113.ap-southeast-1.compute.amazonaws.com:8080//popular/${product.productId}/upload`,
           formData,
           {
             headers: {
@@ -96,7 +96,7 @@ export default function AdminPopularProducts() {
         <img
           src={
             product.imageLink
-              ? `http://http://ec2-18-142-245-113.ap-southeast-1.compute.amazonaws.com:8080//popular/${product.productId}/download`
+              ? `http://ec2-18-142-245-113.ap-southeast-1.compute.amazonaws.com:8080//popular/${product.productId}/download`
               : "/images/empty-image.jpeg"
           }
           alt={product.productName}
