@@ -14,7 +14,7 @@ export default function Home() {
       {/* <Collection /> */}
       {/* <Specials /> */}
       <Banner />
-      {/* <Blogs /> */}
+      <Blogs />
       <Footer />
     </>
   );
