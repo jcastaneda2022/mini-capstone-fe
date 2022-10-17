@@ -26,7 +26,7 @@ export default function NavigationBar() {
   useEffect(() => {
     if (localStorage.email) {
       getAllProductsByUser(localStorage.email).then((response) => {
-        setCartProducts(response.payload);
+        setCartProducts(response?.payload);
       });
     }
   }, []);

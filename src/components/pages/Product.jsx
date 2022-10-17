@@ -21,7 +21,7 @@ export default function Product() {
     setLoading(true);
 
     getProduct(id).then((response) => {
-      setProduct(response.payload);
+      setProduct(response?.payload);
       setLoading(false);
     });
   }, [id]);

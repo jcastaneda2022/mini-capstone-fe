@@ -14,7 +14,7 @@ export default function Specials() {
   useEffect(() => {
     getAllProducts().then((response) => {
       setSpecials(
-        response.payload.filter((product) => product.type === "special")
+        response?.payload.filter((product) => product.type === "special")
       );
     });
   }, []);

@@ -18,7 +18,7 @@ export default function Collection() {
 
     getAllProducts().then((response) => {
       setTimeout(() => {
-        const allProducts = response.payload.filter(
+        const allProducts = response?.payload.filter(
           (product) => product.type === "regular"
         );
 

@@ -16,13 +16,13 @@ export default function AboutUs() {
   useEffect(() => {
     getAllPopularProducts().then((response) => {
       setTopRated(
-        response.payload.filter((product) => product.type === "topRated")
+        response?.payload.filter((product) => product.type === "topRated")
       );
       setBestSelling(
-        response.payload.filter((product) => product.type === "bestSelling")
+        response?.payload.filter((product) => product.type === "bestSelling")
       );
       setOnsale(
-        response.payload.filter((product) => product.type === "onSale")
+        response?.payload.filter((product) => product.type === "onSale")
       );
     });
   }, []);

@@ -27,7 +27,7 @@ export default function Cart() {
   useEffect(() => {
     if (localStorage.email) {
       getAllProductsByUser(activeUser.email).then((response) => {
-        setCartProducts(response.payload);
+        setCartProducts(response?.payload);
       });
     }
   }, []);
@@ -46,7 +46,7 @@ export default function Cart() {
     e.preventDefault();
     checkOut(activeUser.email).then((response) => {
       setShowModal(true);
-      setCartProducts(response.payload);
+      setCartProducts(response?.payload);
     });
   };
 
