@@ -1,7 +1,8 @@
 import { get, put, deleteMethod } from '../../utilities/https';
+const APIServicePath = 'https://minicapsone-jowel.herokuapp.com';
 
 export const getAllProducts = () => {
-    const url = '/product/getAll';
+    const url = APIServicePath + '/product/getAll';
     return new Promise((resolve, reject) => {
         const promise = get(url);
         promise.then((response) => {
@@ -16,7 +17,7 @@ export const getAllProducts = () => {
 }
 
 export const getProduct = (productId) => {
-    const url = `/product/getById/${productId}`;
+    const url = APIServicePath + `/product/getById/${productId}`;
     return new Promise((resolve, reject) => {
         const promise = get(url);
         promise.then((response) => {
@@ -32,7 +33,7 @@ export const getProduct = (productId) => {
 
 
 export const addProduct = (body) => {
-    const url = '/product/add';
+    const url = APIServicePath + '/product/add';
     return new Promise((resolve, reject) => {
         const promise = put(url, body);
         promise.then((response) => {
@@ -47,7 +48,7 @@ export const addProduct = (body) => {
 }
 
 export const deleteProduct = (productId) => {
-    const url = `/product/delete/${productId}`;
+    const url = APIServicePath + `/product/delete/${productId}`;
     return new Promise((resolve, reject) => {
         const promise = deleteMethod(url);
         promise.then((response) => {
