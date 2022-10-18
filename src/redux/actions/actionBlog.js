@@ -1,7 +1,8 @@
 import { get, put, deleteMethod } from '../../utilities/https';
+const APIServicePath = 'https://minicapsone-jowel.herokuapp.com'
 
 export const getAllBlogs = () => {
-    const url = '/blog/getAll';
+    const url = APIServicePath + '/blog/getAll';
     return new Promise((resolve, reject) => {
         const promise = get(url);
         promise.then((response) => {
