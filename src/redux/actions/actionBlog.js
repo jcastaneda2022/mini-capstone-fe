@@ -1,5 +1,5 @@
 import { get, put, deleteMethod } from '../../utilities/https';
-const APIServicePath = 'https://minicapsone-jowel.herokuapp.com';
+const APIServicePath = 'https://minicapsone-jowel.herokuapp.com'
 
 export const getAllBlogs = () => {
     const url = APIServicePath + '/blog/getAll';
@@ -17,7 +17,7 @@ export const getAllBlogs = () => {
 }
 
 export const addBlog = (body) => {
-    const url = APIServicePath + `/blog/add`
+    const url = `/blog/add`
     return new Promise((resolve, reject) => {
         const promise = put(url, body);
         promise.then((response) => {
@@ -32,7 +32,7 @@ export const addBlog = (body) => {
 }
 
 export const deleteBlog = (blogId) => {
-    const url = APIServicePath + `/blog/delete/${blogId}`;
+    const url = `/blog/delete/${blogId}`;
     return new Promise((resolve, reject) => {
         const promise = deleteMethod(url);
         promise.then((response) => {
