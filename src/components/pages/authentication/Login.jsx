@@ -53,7 +53,10 @@ export default function Login() {
       .signInWithPopup(facebookProvider)
       .then((response) => {
         loginUserViaProvider(response?.additionalUserInfo.profile.email);
-        localStorage.setItem("email", email);
+        localStorage.setItem(
+          "email",
+          response?.additionalUserInfo.profile.email
+        );
         navigate("/");
       })
       .catch((e) => alert(e.message));
@@ -65,7 +68,10 @@ export default function Login() {
       .signInWithPopup(googleProvider)
       .then((response) => {
         loginUserViaProvider(response?.additionalUserInfo.profile.email);
-        localStorage.setItem("email", email);
+        localStorage.setItem(
+          "email",
+          response?.additionalUserInfo.profile.email
+        );
         navigate("/");
       })
       .catch((error) => alert(error.message));
