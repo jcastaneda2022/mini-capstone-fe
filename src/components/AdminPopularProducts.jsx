@@ -70,7 +70,7 @@ export default function AdminPopularProducts() {
       // Upload to s3
       axios
         .put(
-          `https://minicapsone-jowel.herokuapp.com/popular/${product.productId}/upload`,
+          `https://mini-capstone-be.herokuapp.com//popular/${product.productId}/upload`,
           formData,
           {
             headers: {
@@ -96,7 +96,7 @@ export default function AdminPopularProducts() {
         <img
           src={
             product.imageLink
-              ? `https://minicapsone-jowel.herokuapp.com/popular/${product.productId}/download`
+              ? `https://mini-capstone-be.herokuapp.com//popular/${product.productId}/download`
               : "/images/empty-image.jpeg"
           }
           alt={product.productName}

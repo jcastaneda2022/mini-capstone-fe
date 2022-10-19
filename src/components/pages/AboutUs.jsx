@@ -36,7 +36,7 @@ export default function AboutUs() {
         <img
           src={
             product.imageLink
-              ? `https://minicapsone-jowel.herokuapp.com/popular/${product.productId}/download`
+              ? `https://mini-capstone-be.herokuapp.com//popular/${product.productId}/download`
               : "/images/empty-image.jpeg"
           }
           alt={product.productName}
