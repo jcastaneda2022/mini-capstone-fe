@@ -35,7 +35,7 @@ export default function Specials() {
           <img
             src={
               item.imageLink
-                ? `https://mini-capstone-be.herokuapp.com//product/${item.productId}/download`
+                ? `https://mini-capstone-be.herokuapp.com/product/${item.productId}/download`
                 : "/images/empty-image.jpeg"
             }
             alt={item.productName}

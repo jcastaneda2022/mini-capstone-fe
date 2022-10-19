@@ -20,7 +20,7 @@ export default function Blogs() {
         <img
           src={
             blog.imageLink
-              ? `https://mini-capstone-be.herokuapp.com//blog/${blog.blogId}/download`
+              ? `https://mini-capstone-be.herokuapp.com/blog/${blog.blogId}/download`
               : "/images/empty-image.jpeg"
           }
           alt={blog.blogName}
